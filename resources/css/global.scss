@@ -1,0 +1,5 @@
+@use 'variebles' as v;
+
+* {
+    font-size: var(--base-font-size);
+}
