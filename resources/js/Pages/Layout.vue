@@ -36,7 +36,7 @@ export default {
         <Link href="/">
         <h1>S1mple-Store</h1>
         </Link>
-        <Link href="/cart">Корзина {{ cartQuantity }}</Link>
+        <Link href="/cart">Корзина {{ cartQuantity === 0 ? '' : cartQuantity }}</Link>
     </header>
     <main>
         <slot />

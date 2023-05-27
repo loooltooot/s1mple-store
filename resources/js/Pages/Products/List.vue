@@ -10,17 +10,19 @@ defineProps({ products: Array<iProduct> });
 <template>
     <Head title="S1mple-Store" />
     <Layout>
-        <h2>Продукты</h2>
-        <ul>
-            <li v-for="product in products">
-                <ProductCard :product="product" />
-            </li>
-        </ul>
+        <section>
+            <h2>Продукты</h2>
+            <ul class="grid-products">
+                <li v-for="product in products">
+                    <ProductCard :product="product" />
+                </li>
+            </ul>
+        </section>
     </Layout>
 </template>
 
-<style lang="scss" scoped>
-ul {
+<style lang="scss">
+ul.grid-products {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     row-gap: 2.5vw;

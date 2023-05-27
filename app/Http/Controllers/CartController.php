@@ -9,11 +9,12 @@ use Inertia\Response;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // return Inertia::render('Products/List', [
-        //     'cart' => Product::all()
-        // ]);
+        $ids = array_keys($request->session()->get('cart', []));
+        return Inertia::render('Cart/Cart', [
+            'cart' => Product::whereIn('id', $ids)->get()
+        ]);
     }
 
     public function addItem(Request $request)
@@ -23,25 +24,29 @@ class CartController extends Controller
 
         $cart = $request->session()->get('cart', []);
 
-        $cart[$productId] = $quantity;
+        if ($quantity === 0) {
+            unset($cart[$productId]);
+        } else {
+            $cart[$productId] = $quantity;
+        }
 
         $request->session()->put('cart', $cart);
 
         return response()->json(['message' => 'Item added to cart']);
     }
 
-    public function getQuantity(string $id)
+    public function getQuantity(Request $request, string $id)
     {
-        $cart = session()->get('cart', []);
+        $cart = $request->session()->get('cart', []);
         if (array_key_exists($id, $cart)) {
             return response()->json($cart[$id]);
         }
         return response()->json(0);
     }
 
-    public function getCartLength()
+    public function getCartLength(Request $request)
     {
-        $cart = session()->get('cart', []);
+        $cart = $request->session()->get('cart', []);
 
         $sum = array_reduce($cart, function ($prev, $item) {
             $prev += $item;

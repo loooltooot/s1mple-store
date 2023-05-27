@@ -2,7 +2,7 @@
 import axios from 'axios';
 import type iProduct from '../../Models/product';
 
-defineProps({ product: { type: Object as () => iProduct, required: true } })
+defineProps({ product: { type: Object as () => iProduct, required: true }, hideWhenNull: Boolean })
 </script>
 
 <script lang="ts">
@@ -41,6 +41,14 @@ export default {
             }
         }
     },
+    watch: {
+        quantity() {
+            const card = document.querySelector(`div[data-id="${this.product.id}"]`)
+            if (this.quantity === 0 && this.hideWhenNull) {
+                card?.parentElement?.classList.add('hidden')
+            }
+        }
+    },
     mounted() {
         axios.get(`/cart/quantity/${this.product.id}`)
             .then(response => {
@@ -53,7 +61,7 @@ export default {
 </script>
 
 <template>
-    <div class="card">
+    <div class="card" :data-id="product.id">
         <div class="image-wrapper">
             <img :src="'storage/images/' + product.img" :alt="product.title">
         </div>
@@ -74,12 +82,13 @@ export default {
 .card {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 28.85vw;
 
     .image-wrapper {
         overflow: clip;
         width: 100%;
         height: 11.2vw;
+        border-top-right-radius: .52vw;
 
         img {
             width: 100%;
@@ -116,6 +125,7 @@ export default {
         color: var(--back-color);
         transition: border-color .3s ease, background-color .3s ease;
         position: relative;
+        border-bottom-left-radius: .52vw;
 
         span {
             position: absolute;

@@ -57,6 +57,7 @@ ul {
 main {
     padding: var(--side-main-padding);
     margin-bottom: 5vw;
+    margin-top: 2.5vw;
 }
 
 a {
@@ -66,4 +67,8 @@ a {
     &:hover {
         color: var(--primary-color);
     }
+}
+
+.hidden {
+    display: none !important;
 }
