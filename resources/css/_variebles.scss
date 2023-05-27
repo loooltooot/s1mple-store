@@ -1,10 +1,17 @@
 $primaryColor: rgb(53, 255, 188);
 $secondColor: rgb(53, 255, 144);
+$backColor: rgb(14, 14, 14);
 
 :root {
     --primary-color: rgb(53, 255, 188);
     --second-color: rgb(53, 255, 144);
+    --back-color: rgb(14, 14, 14);
 
     --base-font-size: 16px;
+    --h1-font-size: 3em;
     --h2-font-size: 1.5em;
+    --h3-font-size: 1.2em;
+
+    --side-main-padding: 0 18vw;
+    --side-header-padding: 0 5vw;
 }

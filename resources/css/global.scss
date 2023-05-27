@@ -1,5 +1,69 @@
 @use 'variebles' as v;
+@use 'header';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 
 * {
     font-size: var(--base-font-size);
+    font-family: 'Montserrat', sans-serif;
+    color: white
+}
+
+::selection {
+    background-color: var(--second-color);
+    color: white;
+}
+
+::-moz-selection {
+    background-color: var(--second-color);
+    color: white;
+}
+
+body::-webkit-scrollbar {
+    width: .42vw;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--back-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--second-color);
+}
+
+body {
+    background-color: var(--back-color);
+}
+
+h1 {
+    font-size: var(--h1-font-size);
+}
+
+h2 {
+    font-size: var(--h2-font-size);
+}
+
+h3 {
+    font-size: var(--h3-font-size);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+main {
+    padding: var(--side-main-padding);
+    margin-bottom: 5vw;
+}
+
+a {
+    text-decoration: none;
+    transition: color .3s ease;
+
+    &:hover {
+        color: var(--primary-color);
+    }
 }

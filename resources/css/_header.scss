@@ -1,0 +1,29 @@
+@use 'variebles' as v;
+
+#app {
+    &>header {
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--side-header-padding);
+        border-bottom: .11vw solid var(--second-color);
+        position: sticky;
+        top: 0;
+        background-color: lighten($color: v.$backColor, $amount: 5);
+        backdrop-filter: blur(1.6vw);
+        transition: background-color .3s ease;
+
+        h1 {
+            transition: font-size .3s ease;
+        }
+
+        &.scrolled {
+            background-color: rgba($color: v.$backColor, $alpha: .9);
+
+            h1 {
+                font-size: var(--base-font-size);
+            }
+        }
+    }
+}
