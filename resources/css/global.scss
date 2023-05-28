@@ -72,3 +72,44 @@ a {
 .hidden {
     display: none !important;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+        background: none;
+        border: none;
+        border-bottom: var(--primary-color) .11vw solid;
+        font-size: var(--h3-font-size);
+        padding: .33vw .6vw;
+        padding-left: .33vw;
+
+        &:focus {
+            outline: none;
+            border-right: var(--second-color) .11vw solid;
+        }
+    }
+}
+
+.button {
+    display: block;
+    border: var(--primary-color) .11vw solid;
+    width: fit-content;
+    margin-bottom: 1.04vw;
+    background-color: var(--primary-color);
+    color: var(--back-color);
+    font-weight: 700;
+    font-size: var(--h3-font-size);
+    padding: .11vw .33vw;
+    border-bottom-left-radius: .52vw;
+    border-top-right-radius: .52vw;
+    transition: background-color .3s ease, border-color .3s ease;
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--second-color);
+        background-color: var(--second-color);
+        color: black;
+    }
+}

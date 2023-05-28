@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use App\Http\Middleware\CheckCartBeforeOrder;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,11 @@ use App\Http\Controllers\CartController;
 */
 
 Route::get('/', [ProductController::class, 'index']);
-Route::get('/cart', [CartController::class, 'index']);
+
+Route::get('/cart', [CartController::class, 'index'])->middleware(CheckCartBeforeOrder::class);
 Route::post('/cart/add', [CartController::class, 'addItem']);
 Route::get('/cart/quantity/{id}', [CartController::class, 'getQuantity']);
 Route::get('/cart/quantity', [CartController::class, 'getCartLength']);
+
+Route::get('/order', [OrderController::class, 'index'])->middleware(CheckCartBeforeOrder::class);
+Route::post('/order/add', [OrderController::class, 'store'])->middleware(CheckCartBeforeOrder::class);
