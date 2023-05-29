@@ -9,6 +9,7 @@ cd s1mple-store
 ```
 ### 3. Создать контейнеры через docker-compose
 ```console
+docker-compose pull laravel.test
 docker-compose up -d
 ```
 #### (Другой вариант) 3.1 Установить зависимоcти composer
