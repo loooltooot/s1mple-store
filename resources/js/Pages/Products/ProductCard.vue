@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import axios from 'axios';
 import type iProduct from '../../Models/product';
+import { Link } from '@inertiajs/vue3'
 
 defineProps({ product: { type: Object as () => iProduct, required: true }, hideWhenNull: Boolean })
 </script>
@@ -62,17 +63,19 @@ export default {
 
 <template>
     <div class="card" :data-id="product.id">
+        <Link :href="'/products/' + product.id">
         <div class="image-wrapper">
             <img :src="'storage/images/' + product.img" :alt="product.title">
         </div>
+        </Link>
         <div class="content">
             <h3>{{ product.title }}</h3>
-            <p>{{ product.description }}</p>
-            <span class="price">{{ product.price }}р</span>
+            <!-- <p>{{ product.description }}</p> -->
+            <span class="price">{{ product.price }}₽</span>
         </div>
         <button @click="incrementQuantity" class="add-to-cart">
             <span @click="decrementQuantity" v-if="quantity !== 0">-</span>
-            {{ quantity === 0 ? 'Добавить в корзину' : quantity }}
+            {{ quantity === 0 ? '+' : quantity }}
             <span @click="incrementQuantity" v-if="quantity !== 0">+</span>
         </button>
     </div>
@@ -82,13 +85,27 @@ export default {
 .card {
     display: flex;
     flex-direction: column;
-    min-height: 28.85vw;
+    min-height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        .add-to-cart {
+            top: 0;
+        }
+
+        div.image-wrapper {
+            border-color: white;
+        }
+    }
 
     .image-wrapper {
         overflow: clip;
         width: 100%;
-        height: 11.2vw;
-        border-top-right-radius: .52vw;
+        height: 8.75vw;
+        border: var(--second-color) .1vw solid;
+        box-sizing: border-box;
+        transition: border-color .3s ease;
 
         img {
             width: 100%;
@@ -99,21 +116,17 @@ export default {
         flex-grow: 2;
         display: flex;
         flex-direction: column;
-        margin-bottom: .52vw;
 
         h3 {
             margin-top: .52vw;
-        }
-
-        p {
-            flex-grow: 2;
-            margin: 0;
-            margin-bottom: 1vw;
+            flex-grow: 1;
+            margin-bottom: .3vw;
         }
 
         span.price {
             font-weight: 700;
             font-size: --h3-font-size;
+            color: var(--second-color);
         }
     }
 
@@ -123,25 +136,28 @@ export default {
         background-color: var(--primary-color);
         padding: .22vw .11vw;
         color: var(--back-color);
-        transition: border-color .3s ease, background-color .3s ease;
+        transition: border-color .3s ease, background-color .3s ease, top .3s ease;
         position: relative;
-        border-bottom-left-radius: .52vw;
+        position: absolute;
+        top: -5vw;
+        left: 0;
+        width: 100%;
 
         span {
             position: absolute;
-            font-size: var(--h2-font-size);
+            font-size: var(--h3-font-size);
             color: var(--back-color);
             font-weight: 700;
 
             &:nth-child(1) {
                 left: .3vw;
-                top: -.11vw;
+                top: .1vw;
 
             }
 
             &:nth-child(2) {
                 right: .3vw;
-                top: 0vw;
+                top: .1vw;
             }
 
             &:hover {

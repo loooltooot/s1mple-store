@@ -9,9 +9,10 @@ use Inertia\Response;
 
 class ProductController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return Inertia::render('Products/List', [
-            'products' => Product::all()
+            'products' => Product::orderBy('title', 'ASC')->get()
         ]);
     }
 }
