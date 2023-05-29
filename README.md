@@ -20,5 +20,9 @@ composer i
 ```console
 ./vendor/bin/sail up -d
 ```
-### 4. Дождаться выполнения команд в laravel.test и перезапустить этот контейнер
+### 4. Дождаться выполнения команд в laravel.test и выполнить команды (docker-compose / sail)
+```console
+docker-compose down
+docker-compose up -d
+```
 ### 5. Открыть http://127.0.0.1/ в браузере
