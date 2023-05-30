@@ -7,7 +7,7 @@
         justify-content: space-between;
         align-items: center;
         padding: var(--side-header-padding);
-        border-bottom: .11vw solid var(--second-color);
+        border-bottom: .11vw solid var(--primary-color);
         position: sticky;
         top: 0;
         background-color: lighten($color: v.$backColor, $amount: 5);

@@ -14,7 +14,6 @@ composer i
 npm i
 npm run build
 php artisan migrate
-php artisan db:seed
 php artisan storage:link
 
 if [ $# -gt 0 ]; then

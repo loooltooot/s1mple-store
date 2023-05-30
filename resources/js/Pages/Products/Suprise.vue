@@ -22,7 +22,7 @@ export default {
 
 <template>
     <div id="suprise">
-        <Transition name="headliner">
+        <Transition name="fly-down">
             <Link v-if="show" :href="'/products/' + product.id">
             <div class="card">
                 <div class="img-wrapper">
@@ -37,7 +37,7 @@ export default {
                 fill="black" />
         </svg>
         <div id="suprise-header">
-            <Transition name="headliner">
+            <Transition name="fly-down">
                 <span v-if="show" class="headliner">{{ product.title }}</span>
             </Transition>
             <span v-if="!show" class="headliner">Не знаешь, какой вкус больше понравится?</span>
@@ -45,19 +45,6 @@ export default {
         </div>
     </div>
 </template>
-
-<style lang="scss">
-.headliner-enter-active,
-.headliner-leave-active {
-    transition: opacity .5s ease, transform .5s ease;
-}
-
-.headliner-enter-from,
-.headliner-leave-to {
-    opacity: 0;
-    transform: translateY(-1.56vw);
-}
-</style>
 
 <style lang="scss" scoped>
 div#suprise {

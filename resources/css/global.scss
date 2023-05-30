@@ -126,6 +126,15 @@ form {
     }
 }
 
+input {
+    accent-color: var(--second-color);
+}
+
+input:focus {
+    outline: none;
+    border-right: var(--second-color) .11vw solid;
+}
+
 .button {
     display: block;
     border: var(--primary-color) .11vw solid;
@@ -165,4 +174,17 @@ form {
         background-color: transparent;
         color: white;
     }
+}
+
+// animations
+
+.fly-down-enter-active,
+.fly-down-leave-active {
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+.fly-down-enter-from,
+.fly-down-leave-to {
+    opacity: 0;
+    transform: translateY(-1.56vw);
 }

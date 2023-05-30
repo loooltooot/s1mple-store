@@ -11,8 +11,6 @@ import { Head } from '@inertiajs/vue3';
                 <input required type="email" name="email" placeholder="Email" />
                 <input required type="password" name="password" placeholder="Пароль" />
 
-                <span class="passwordsError"> Пароли не совпадают </span>
-
                 <input type="submit" value="Войти" />
             </form>
         </section>
