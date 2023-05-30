@@ -21,8 +21,8 @@ export default {
 <template>
     <Layout>
         <section>
-            <h2>Заказ на сумму <span class="sum">{{ sum }}₽</span></h2>
-            <form action="/order/add" method="POST">
+            <h2 class="hugged">Заказ на сумму <span class="sum">{{ sum }}₽</span></h2>
+            <form class="hugged" action="/order/add" method="POST">
                 <input required type="text" name="name" placeholder="Имя">
                 <input required type="text" name="surname" placeholder="Фамилия">
                 <input required type="text" name="tel" id="tel" placeholder="Номер телефона">

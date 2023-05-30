@@ -71,9 +71,10 @@ export default {
         <div class="content">
             <h3>{{ product.title }}</h3>
             <!-- <p>{{ product.description }}</p> -->
-            <span class="price">{{ product.price }}₽</span>
+            <span class="price">{{ product.price }}₽ <span v-if="hideWhenNull"> * {{ quantity }} = {{ product.price *
+                quantity }}₽</span></span>
         </div>
-        <button @click="incrementQuantity" class="add-to-cart">
+        <button v-if="this.$store.state.loggedIn" @click="incrementQuantity" class="add-to-cart">
             <span @click="decrementQuantity" v-if="quantity !== 0">-</span>
             {{ quantity === 0 ? '+' : quantity }}
             <span @click="incrementQuantity" v-if="quantity !== 0">+</span>
@@ -123,7 +124,7 @@ export default {
             margin-bottom: .3vw;
         }
 
-        span.price {
+        span {
             font-weight: 700;
             font-size: --h3-font-size;
             color: var(--second-color);

@@ -11,9 +11,9 @@ defineProps({ cart: Array<iProduct> })
     <Head title="Корзина" />
     <Layout>
         <section>
-            <h2>Корзина</h2>
-            <Link href="/order" class="button">Заказать</Link>
-            <ul class="grid-products">
+            <h2 class="hugged">Корзина</h2>
+            <Link class="hugged button" href="/order">Заказать</Link>
+            <ul class="grid-products hugged">
                 <li v-for="product in cart">
                     <ProductCard :product="product" :hide-when-null="true" />
                 </li>

@@ -1,5 +1,6 @@
 @use 'variebles' as v;
 @use 'header';
+@use 'footer';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 @font-face {
@@ -55,6 +56,12 @@ body {
     background-color: var(--back-color);
 }
 
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh + 11.56vw);
+}
+
 h1,
 h2,
 .bottom-shadow {
@@ -84,6 +91,7 @@ main {
     padding: var(--side-main-padding);
     margin-bottom: 5vw;
     margin-top: 2.5vw;
+    flex-grow: 1;
 }
 
 a {
@@ -143,4 +151,18 @@ form {
 .hugged {
     width: 39.06vw;
     margin-inline: auto;
+}
+
+.focused-button {
+    padding: 0.3vw 0.7vw;
+    transition: background-color 0.3s ease, color 0.1s ease;
+    background-color: var(--primary-color);
+    color: #000;
+    border: 0.1vw var(--primary-color) solid;
+    cursor: pointer;
+
+    &:hover {
+        background-color: transparent;
+        color: white;
+    }
 }

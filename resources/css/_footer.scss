@@ -1,0 +1,54 @@
+footer {
+    position: relative;
+    background-color: var(--primary-color);
+    padding-right: 10.42vw;
+    padding-top: 1.3vw;
+    padding-bottom: 1.3vw;
+    padding-left: 25vw;
+    display: flex;
+    justify-content: space-between;
+    height: 11.56vw;
+    box-sizing: border-box;
+    z-index: 9;
+
+    svg {
+        position: absolute;
+        left: 4vw;
+        top: 0;
+    }
+
+    div#footer-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & * {
+            color: #000;
+        }
+
+        span#disclaimer {
+            width: 16.09vw;
+        }
+
+        div#contacts {
+            display: flex;
+            column-gap: 1.56vw;
+        }
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: right;
+        row-gap: 0.42vw;
+
+        li a {
+            color: #000;
+            font-weight: 700;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}

@@ -8,7 +8,8 @@ import axios from 'axios'
 const store = createStore({
     state() {
         return {
-            cartQuantity: 0
+            cartQuantity: 0,
+            loggedIn: false
         }
     },
     mutations: {
@@ -22,6 +23,9 @@ const store = createStore({
             if (state.cartQuantity - 1 >= 0) {
                 state.cartQuantity--
             }
+        },
+        setLoggedIn(state, status) {
+            state.loggedIn = status
         }
     },
     actions: {
@@ -29,6 +33,14 @@ const store = createStore({
             axios.get('/cart/quantity')
                 .then(response => {
                     context.commit('setQuantity', response.data)
+                }).catch(error => {
+                    console.log(error)
+                })
+        },
+        async getLoggedIn(context) {
+            axios.get('/auth/status')
+                .then(response => {
+                    context.commit('setLoggedIn', response.data)
                 }).catch(error => {
                     console.log(error)
                 })
