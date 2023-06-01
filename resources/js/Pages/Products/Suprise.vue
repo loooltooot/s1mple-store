@@ -26,7 +26,7 @@ export default {
             <Link v-if="show" :href="'/products/' + product.id">
             <div class="card">
                 <div class="img-wrapper">
-                    <img :src="'storage/images/' + product.img" :alt="product.title">
+                    <img :src="'/storage/images/' + product.img" :alt="product.title">
                 </div>
             </div>
             </Link>

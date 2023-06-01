@@ -3,7 +3,7 @@ import axios from 'axios';
 import type iProduct from '../../Models/product';
 import { Link } from '@inertiajs/vue3'
 
-defineProps({ product: { type: Object as () => iProduct, required: true }, hideWhenNull: Boolean })
+defineProps({ product: { type: Object as () => iProduct, required: true }, hideWhenNull: Boolean, adminDisplay: Boolean })
 </script>
 
 <script lang="ts">
@@ -63,16 +63,20 @@ export default {
 
 <template>
     <div class="card" :data-id="product.id">
-        <Link :href="'/products/' + product.id">
+        <Link :href="!adminDisplay ? '/products/' + product.id : '/cms/products/edit/' + product.id">
         <div class="image-wrapper">
-            <img :src="'storage/images/' + product.img" :alt="product.title">
+            <img :src="'/storage/images/' + product.img" :alt="product.title">
         </div>
         </Link>
         <div class="content">
             <h3>{{ product.title }}</h3>
             <!-- <p>{{ product.description }}</p> -->
-            <span class="price">{{ product.price }}₽ <span v-if="hideWhenNull"> * {{ quantity }} = {{ product.price *
-                quantity }}₽</span></span>
+            <span class="price">{{ product.price }}₽
+                <span v-if="hideWhenNull"> * {{ quantity }} = {{ product.price *
+                    quantity }}₽
+                </span>
+                <Link class="delete-button" :href="'/cms/products/delete/' + product.id" v-if="adminDisplay">удалить</Link>
+            </span>
         </div>
         <button v-if="this.$store.state.loggedIn" @click="incrementQuantity" class="add-to-cart">
             <span @click="decrementQuantity" v-if="quantity !== 0">-</span>

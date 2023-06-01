@@ -42,6 +42,7 @@ export default {
 span.sum {
     font-size: 1em;
     color: var(--primary-color);
+    text-shadow: none;
 }
 
 form {

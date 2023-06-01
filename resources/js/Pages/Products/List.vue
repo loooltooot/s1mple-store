@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import Layout from '../Layout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import type iProduct from '../../Models/product'
 import ProductCard from './ProductCard.vue';
 import Suprise from './Suprise.vue';
 
-defineProps({ products: { type: Array<iProduct> } });
+defineProps({ products: { type: Array<iProduct> }, adminDisplay: Boolean });
 </script>
 
 <script lang="ts">
@@ -15,18 +15,29 @@ export default {
             supriseProductId: 0,
             searchQuery: '',
             sortType: '',
-            desc: ''
+            desc: '',
+            supriseProduct: Object as () => iProduct,
+            productsInit: Array<iProduct>
         }
     },
     methods: {
         sortArray(array: Array<iProduct>) {
+            if (!this.sortType) {
+                return this.searchQuery ? this.productsInit.filter((product) =>
+                    product.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+                )
+                    : this.productsInit
+            }
+
             return this.desc
                 ? array.sort((a, b) => +b['price'] - +a['price'])
                 : array.sort((a, b) => +a['price'] - +b['price']);
         }
     },
     mounted() {
+        this.productsInit = [...this.products]
         this.supriseProductId = Math.floor(Math.random() * (this.products?.length));
+        this.supriseProduct = this.products[this.supriseProductId]
     },
     computed: {
         searchedProducts() {
@@ -36,8 +47,7 @@ export default {
                 : this.products
         },
         sortedProducts() {
-            return this.sortType ? this.sortArray(this.searchedProducts)
-                : this.searchedProducts
+            return this.sortArray(this.searchedProducts)
         }
     }
 }
@@ -47,12 +57,13 @@ export default {
     <Head title="Продукты" />
     <Layout>
         <section>
-            <Suprise :product="products[supriseProductId]" />
+            <Link v-if="adminDisplay" href="/cms/panel">Вернуться в панель</Link>
+            <Suprise v-if="!adminDisplay" :product="supriseProduct" />
             <div class="filters hugged">
                 <h2>Товары:</h2>
                 <label>
                     цена
-                    <input type="checkbox" v-model="sortType" value="price" />
+                    <input type="checkbox" v-model="sortType" />
                 </label>
                 <label>
                     по убыванию
@@ -62,7 +73,7 @@ export default {
             </div>
             <ul class="grid-products hugged">
                 <li v-for="product in sortedProducts" :key="product.id">
-                    <ProductCard :product="product" />
+                    <ProductCard :product="product" :adminDisplay="adminDisplay" />
                 </li>
             </ul>
         </section>
