@@ -61,4 +61,10 @@ ul.category-options {
     flex-direction: column;
     row-gap: .52vw;
 }
+
+@media screen and (max-width: 450px) {
+    ul.options {
+        flex-direction: column;
+    }
+}
 </style>

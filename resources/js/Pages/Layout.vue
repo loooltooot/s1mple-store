@@ -107,4 +107,19 @@ svg.footer-logo {
     column-gap: .94vw;
     align-items: center;
 }
+
+@media screen and (max-width: 450px) {
+    svg.header-logo {
+        width: 17vw;
+        height: 17vw;
+    }
+
+    .links {
+        column-gap: 2.5vw;
+    }
+
+    svg.footer-logo {
+        display: none;
+    }
+}
 </style>

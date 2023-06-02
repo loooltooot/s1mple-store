@@ -128,4 +128,17 @@ div.filters {
         }
     }
 }
+
+@media screen and (max-width: 450px) {
+    ul.grid-products {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 2vw;
+    }
+
+    div.filters {
+        flex-direction: column;
+        row-gap: 2.5vw;
+        margin-bottom: 5vw;
+    }
+}
 </style>

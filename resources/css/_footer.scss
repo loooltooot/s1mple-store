@@ -52,3 +52,27 @@ footer {
         }
     }
 }
+
+@media screen and (max-width: 450px) {
+    footer {
+        height: fit-content;
+        padding: var(--side-header-padding);
+        flex-direction: column;
+        padding-bottom: 5vw;
+        padding-top: 5vw;
+
+        div#footer-content {
+            row-gap: 7vw;
+
+            span#disclaimer {
+                width: 70vw;
+            }
+
+            div#contacts {
+                flex-direction: column;
+                row-gap: 2vw;
+            }
+        }
+
+    }
+}

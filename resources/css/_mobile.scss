@@ -1,0 +1,28 @@
+@media screen and (max-width: 450px) {
+    :root {
+        --base-font-size: 3.56vw;
+        --side-main-padding: 0 5vw;
+    }
+
+    body,
+    main,
+    section,
+    header,
+    footer {
+        overflow: clip;
+    }
+
+    .hugged {
+        width: 90vw !important;
+    }
+
+    h1,
+    h2,
+    .bottom-shadow {
+        text-shadow: 0px .44vw 0px #3BD055 !important;
+    }
+
+    form input {
+        padding: 2vw 2vw !important;
+    }
+}

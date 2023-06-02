@@ -27,7 +27,7 @@ defineProps({ product: Object as () => iProduct })
 <style lang="scss" scoped>
 .image-wrapper {
     overflow: clip;
-    width: 10vw;
+    width: 40vw;
     height: fit-content;
     box-sizing: border-box;
     transition: border-color .3s ease;

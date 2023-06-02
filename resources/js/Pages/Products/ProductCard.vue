@@ -176,4 +176,16 @@ export default {
         }
     }
 }
+
+@media screen and (max-width: 450px) {
+    .card {
+        .image-wrapper {
+            height: 43.78vw;
+        }
+
+        .add-to-cart {
+            top: 0;
+        }
+    }
+}
 </style>

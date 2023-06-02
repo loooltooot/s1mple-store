@@ -125,4 +125,41 @@ div.card {
         width: 8.75vw;
     }
 }
+
+@media screen and (max-width: 450px) {
+    div#suprise {
+        height: fit-content;
+        padding: 0 5vw;
+        padding-bottom: 1.25vw;
+        flex-direction: column;
+
+        div.card {
+            div.img-wrapper {
+                height: 37.33vw;
+                margin-bottom: 3vw;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        svg {
+            display: none;
+        }
+
+        div#suprise-header {
+            span.headliner {
+                width: fit-content;
+            }
+
+            button {
+                margin-top: 5vw;
+                width: fit-content;
+                padding: .2vw 1vw .5vw;
+                margin-inline: auto;
+            }
+        }
+    }
+}
 </style>
