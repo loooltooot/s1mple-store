@@ -12,7 +12,6 @@ chmod -R ugo+rw /.composer
 
 composer i
 npm i
-npm run build
 php artisan migrate
 php artisan storage:link
 

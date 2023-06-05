@@ -43,16 +43,16 @@ export default {
         </svg>
         </Link>
         <div class="links">
-            <Link v-if="!this.$store.state.loggedIn" href="/login">
+            <Link v-if="!$store.state.loggedIn" href="/login">
             войти
             </Link>
-            <Link v-if="!this.$store.state.loggedIn" href="/signup" class="focused-button">
+            <Link v-if="!$store.state.loggedIn" href="/signup" class="focused-button">
             зарегистрироваться
             </Link>
-            <Link v-if="this.$store.state.loggedIn" href="/auth/logout">
+            <Link v-if="$store.state.loggedIn" href="/auth/logout">
             выйти
             </Link>
-            <Link href="/cart">Корзина {{ cartQuantity === 0 || !this.$store.state.loggedIn ? '' : cartQuantity }}</Link>
+            <Link href="/cart">Корзина {{ cartQuantity === 0 || !$store.state.loggedIn ? '' : cartQuantity }}</Link>
         </div>
     </header>
     <main>

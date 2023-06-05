@@ -78,7 +78,7 @@ export default {
                 <Link class="delete-button" :href="'/cms/products/delete/' + product.id" v-if="adminDisplay">удалить</Link>
             </span>
         </div>
-        <button v-if="this.$store.state.loggedIn" @click="incrementQuantity" class="add-to-cart">
+        <button v-if="$store.state.loggedIn" @click="incrementQuantity" class="add-to-cart">
             <span @click="decrementQuantity" v-if="quantity !== 0">-</span>
             {{ quantity === 0 ? '+' : quantity }}
             <span @click="incrementQuantity" v-if="quantity !== 0">+</span>
